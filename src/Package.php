@@ -135,7 +135,7 @@ class Package
         
 	    $matchDHL1      = "^[0-9]{2}[0-9]{4}[0-9]{4}$";
 	    
-	    $matchUPS1      = "\b(1Z ?[0-9A-Z]{3} ?[0-9A-Z]{3} ?[0-9A-Z]{2} ?[0-9A-Z]{4} ?[0-9A-Z]{3} ?[0-9A-Z]|[\dT]\d\d\d ?\d\d\d\d ?\d\d\d)\b";
+	    $matchUPS1      = "b(1Z ?[0-9A-Z]{3} ?[0-9A-Z]{3} ?[0-9A-Z]{2} ?[0-9A-Z]{4} ?[0-9A-Z]{3} ?[0-9A-Z]|[\dT]\d\d\d ?\d\d\d\d ?\d\d\d)\b";
 	    $matchUPS2      = "^[kKJj]{1}[0-9]{10}$";
 	    $matchUPS3      = "^1Z[A-Z0-9]{3}[A-Z0-9]{3}[0-9]{2}[0-9]{4}[0-9]{4}$/i";
 	
@@ -212,6 +212,29 @@ class Package
 
 
 
+/*
+	
+	//$/i
+	
+	
+    if(substr($tracking, -1) == ';'){ $tracking = substr_replace($tracking, '', -1); }else{ $tracking = $tracking; }
+			    if(strlen($tracking) < 5 || $tracking == '00' || $tracking == 'na' || $tracking == 'n/a'){ $tracking = 'n/a'; $tracking_detect = 'n/a';}
+			    elseif(preg_match('/\b(1Z ?[0-9A-Z]{3} ?[0-9A-Z]{3} ?[0-9A-Z]{2} ?[0-9A-Z]{4} ?[0-9A-Z]{3} ?[0-9A-Z]|[\dT]\d\d\d ?\d\d\d\d ?\d\d\d)\b/',$tracking)){ $tracking_detect = 'ups'; }
+			    elseif(preg_match('/\b(1z ?[0-9A-Z]{3} ?[0-9A-Z]{3} ?[0-9A-Z]{2} ?[0-9A-Z]{4} ?[0-9A-Z]{3} ?[0-9A-Z]|[\dT]\d\d\d ?\d\d\d\d ?\d\d\d)\b/',$tracking)){ $tracking_detect = 'ups'; }
+			    elseif(preg_match('/(\b96\d{20}\b)|(\b\d{15}\b)|(\b\d{12}\b)/',$tracking)){ $tracking_detect = 'fedex'; }
+			    elseif(preg_match('/\b((98\d\d\d\d\d?\d\d\d\d|98\d\d) ?\d\d\d\d ?\d\d\d\d( ?\d\d\d)?)\b/',$tracking)){ $tracking_detect = 'fedex'; }
+			    elseif(preg_match('/^[0-9]{15}$/',$tracking)){ $tracking_detect = 'fedex'; }
+			    
+			    elseif(preg_match('/(\b\d{30}\b)|(\b91\d+\b)|(\b\d{20}\b)/',$tracking)){ $tracking_detect = 'usps'; }
+			    elseif(preg_match('/^E\D{1}\d{9}\D{2}$|^9\d{15,21}$/',$tracking)){ $tracking_detect = 'usps'; }
+			    elseif(preg_match('/^e\D{1}\d{9}\D{2}$|^9\d{15,21}$/',$tracking)){ $tracking_detect = 'usps'; }
+			    elseif(preg_match('/^91[0-9]+$/',$tracking)){ $tracking_detect = 'usps'; }
+			    elseif(preg_match('/^[A-Za-z]{2}[0-9]+US$/',$tracking)){ $tracking_detect = 'usps'; }
+			    elseif(preg_match('/^[A-Za-z]{2}[0-9]+us$/',$tracking)){ $tracking_detect = 'usps'; }
+			    elseif(preg_match('/^LK[0-9]{9}+CN$/',$tracking)){ $tracking_detect = 'usps'; }
+			    elseif(preg_match('/^lk[0-9]{9}+cn$/',$tracking)){ $tracking_detect = 'usps'; }
+			    
+*/
 
 
 
