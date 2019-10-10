@@ -127,7 +127,6 @@ class Package
     private function deduceTrackingCode(): Package
     {
         $tracking_code = $this->tracking_code;
-        $label_ocr = $this->$label_ocr;
         
         $carrier_code  = null;
         $provider_code = null;
