@@ -131,41 +131,41 @@ class Package
         $carrier_code  = null;
         $provider_code = null;
         
+       
         
         
         
-	    $matchDHL1      = '~^[0-9]{2}[0-9]{4}[0-9]{4}$~';
+	    $matchDHL1      = '/\b^[0-9]{2}[0-9]{4}[0-9]{4}\b/i';
+	    $matchDHL2      = '/\b(\d\d\d\d ?\d\d\d\d ?\d\d)\b/i';
 	    
-	    $matchUPS1      = '~b(1Z ?[0-9A-Z]{3} ?[0-9A-Z]{3} ?[0-9A-Z]{2} ?[0-9A-Z]{4} ?[0-9A-Z]{3} ?[0-9A-Z]|[\dT]\d\d\d ?\d\d\d\d ?\d\d\d)\b~';
-	    $matchUPS2      = '~^[kKJj]{1}[0-9]{10}$~';
-	    $matchUPS3      = '~^1Z[A-Z0-9]{3}[A-Z0-9]{3}[0-9]{2}[0-9]{4}[0-9]{4}$/i~';
+	    $matchUPS1      = '/\b(1Z ?[0-9A-Z]{3} ?[0-9A-Z]{3} ?[0-9A-Z]{2} ?[0-9A-Z]{4} ?[0-9A-Z]{3} ?[0-9A-Z]|[\dT]\d\d\d ?\d\d\d\d ?\d\d\d)\b/i';
+	    $matchUPS2      = '/\b^[kKJj]{1}[0-9]{10}\b/i';
+	    $matchUPS3      = '/\b^1Z[A-Z0-9]{3}[A-Z0-9]{3}[0-9]{2}[0-9]{4}[0-9]{4}\b/i';
 	
-	    $matchUSPS1     = '~(\b\d{30}\b)|(\b91\d+\b)|(\b\d{20}\b)~';
-	    $matchUSPS2     = '~(\b\d{30}\b)|(\b91\d+\b)|(\b\d{20}\b)|(\b\d{26}\b)| ^E\D{1}\d{9}\D{2}$|^9\d{15,21}$| ^91[0-9]+$| ^[A-Za-z]{2}[0-9]+US$/i~';
-	    $matchUSPS3     = '~^E\D{1}\d{9}\D{2}$|^9\d{15,21}$~';
-	    $matchUSPS4     = '~^91[0-9]+$~';
-	    $matchUSPS5     = '~^[A-Za-z]{2}[0-9]+US$~';
-	    $matchUSPS6     = '~(\b\d{30}\b)|(\b91\d+\b)|(\b\d{20}\b)|(\b\d{26}\b)| ^E\D{1}\d{9}\D{2}$|^9\d{15,21}$| ^91[0-9]+$| ^[A-Za-z]{2}[0-9]+US$/i~';
-	    $matchUSPS7     = '~^[0-9]{4}[0-9]{4}[0-9]{4}[0-9]{4}[0-9]{4}[0-9]{2}$~';
-		$matchUSPS8     = '~^420[0-9]{5}([0-9]{4}[0-9]{4}[0-9]{4}[0-9]{4}[0-9]{4}[0-9]{2})$~';
+	    $matchUSPS1     = '/\b(\b\d{30}\b)|(\b91\d+\b)|(\b\d{20}\b)\b/i';
+	    $matchUSPS2     = '/\b(\b\d{30}\b)|(\b91\d+\b)|(\b\d{20}\b)|(\b\d{26}\b)| ^E\D{1}\d{9}\D{2}$|^9\d{15,21}$| ^91[0-9]+$| ^[A-Za-z]{2}[0-9]+US\b/i';
+	    $matchUSPS3     = '/\b^E\D{1}\d{9}\D{2}$|^9\d{15,21}\b/i';
+	    $matchUSPS4     = '/\b^91[0-9]\b/i';
+	    $matchUSPS5     = '/\b^[A-Za-z]{2}[0-9]+US\b/i';
+	    $matchUSPS6     = '/\b(\b\d{30}\b)|(\b91\d+\b)|(\b\d{20}\b)|(\b\d{26}\b)| ^E\D{1}\d{9}\D{2}$|^9\d{15,21}$| ^91[0-9]+$| ^[A-Za-z]{2}[0-9]+US\b/i';
+	    $matchUSPS7     = '/\b^[0-9]{4}[0-9]{4}[0-9]{4}[0-9]{4}[0-9]{4}[0-9]{2}\b/i';
+		$matchUSPS8     = '/\b^420[0-9]{5}([0-9]{4}[0-9]{4}[0-9]{4}[0-9]{4}[0-9]{4}[0-9]{2})\b/i';
 	
-	    $matchFedex1    = '~^[1-9]{4}[0-9]{4}[0-9]{4}$~';
-	    $matchFedex2    = '~(\b96\d{20}\b)|(\b\d{15}\b)|(\b\d{12}\b)~';
-	    $matchFedex3    = '~\b((98\d\d\d\d\d?\d\d\d\d|98\d\d) ?\d\d\d\d ?\d\d\d\d( ?\d\d\d)?)\b~';
-	    $matchFedex4    = '~^[0-9]{15}$~';
+	    $matchFedex1    = 'v^[1-9]{4}[0-9]{4}[0-9]{4}\b/i';
+	    $matchFedex2    = '/\b(\b96\d{20}\b)|(\b\d{15}\b)|(\b\d{12}\b)\b/i';
+	    $matchFedex3    = '/\b\b((98\d\d\d\d\d?\d\d\d\d|98\d\d) ?\d\d\d\d ?\d\d\d\d( ?\d\d\d)?)\b/i';
+	    $matchFedex4    = '/\b^[0-9]{15}\b/i';
 	    
-	    $matchLaser = '~^LT[0-9]{8}|LE[0-9]{8}|1L[0-9]{8}+$~i';
+	    $matchLaser = '/\b^LT[0-9]{8}|LE[0-9]{8}|1L[0-9]{8}\b/i';
 
-	    //$matchAmazon = '~^TBA[0-9]{12}+$~i';
 	    $matchAmazon = "/\bTBA[0-9]{12}\b/i";
 	    
+	    $matchRoyalmail = '/\b^[A-Za-z]{2}[0-9]+GB\b/i';
 	    
-	    $matchRoyalmail = '~^[A-Za-z]{2}[0-9]+GB$~i';
+	    $matchChinapost1 = '/\b^R\D{1}[0-9]{9}+CN\b/i';
+	    $matchChinapost2 = '/\b^E\D{1}[0-9]{9}+CN\b/i';
 	    
-	    $matchChinapost1 = '~^R\D{1}[0-9]{9}+CN$~i';
-	    $matchChinapost2 = '~^E\D{1}[0-9]{9}+CN$~i';
-	    
-	    $matchCapost = '~^[0-9]{16}$|^[A-Z]{2}[0-9]{9}[A-Z]{2}$~';
+	    $matchCapost = '/\b^[0-9]{16}$|^[A-Z]{2}[0-9]{9}[A-Z]{2}\b/i';
 	    
 
 	    if(preg_match($matchUPS1, $tracking_code) ||
@@ -188,7 +188,8 @@ class Package
 	               preg_match($matchFedex3, $tracking_code) || 
 	               preg_match($matchFedex4, $tracking_code)) {
 			$carrier_code = Carrier::CODE_FEDEX;
-	    } else if (preg_match($matchDHL1, $tracking_code)) {
+	    } else if (preg_match($matchDHL1, $tracking_code) || 
+	               preg_match($matchDHL2, $tracking_code)) {
 			$carrier_code = Carrier::CODE_DHL;
 	    } else if (preg_match($matchLaser, $tracking_code)) {
 			$carrier_code = Carrier::CODE_LASERSHIP;
