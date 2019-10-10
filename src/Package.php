@@ -156,7 +156,9 @@ class Package
 	    
 	    $matchLaser = '~^LT[0-9]{8}|LE[0-9]{8}|1L[0-9]{8}+$~i';
 
-	    $matchAmazon = '~^TBA[0-9]{12}+$~i';
+	    //$matchAmazon = '~^TBA[0-9]{12}+$~i';
+	    $matchAmazon = "/\bTBA[0-9]{12}\b/i";
+	    
 	    
 	    $matchRoyalmail = '~^[A-Za-z]{2}[0-9]+GB$~i';
 	    
