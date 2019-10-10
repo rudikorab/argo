@@ -133,41 +133,41 @@ class Package
         
         
         
-	    $matchDHL1      = "^[0-9]{2}[0-9]{4}[0-9]{4}$";
+	    $matchDHL1      = '~^[0-9]{2}[0-9]{4}[0-9]{4}$~';
 	    
 	    $matchUPS1      = '~b(1Z ?[0-9A-Z]{3} ?[0-9A-Z]{3} ?[0-9A-Z]{2} ?[0-9A-Z]{4} ?[0-9A-Z]{3} ?[0-9A-Z]|[\dT]\d\d\d ?\d\d\d\d ?\d\d\d)\b~';
 	    $matchUPS2      = '~^[kKJj]{1}[0-9]{10}$~';
 	    $matchUPS3      = '~^1Z[A-Z0-9]{3}[A-Z0-9]{3}[0-9]{2}[0-9]{4}[0-9]{4}$/i~';
 	
-	    $matchUSPS0     = "(\b\d{30}\b)|(\b91\d+\b)|(\b\d{20}\b)";
-	    $matchUSPS1     = "(\b\d{30}\b)|(\b91\d+\b)|(\b\d{20}\b)|(\b\d{26}\b)| ^E\D{1}\d{9}\D{2}$|^9\d{15,21}$| ^91[0-9]+$| ^[A-Za-z]{2}[0-9]+US$/i";
-	    $matchUSPS2     = "^E\D{1}\d{9}\D{2}$|^9\d{15,21}$";
-	    $matchUSPS3     = "^91[0-9]+$";
-	    $matchUSPS4     = "^[A-Za-z]{2}[0-9]+US$";
-	    $matchUSPS5     = "(\b\d{30}\b)|(\b91\d+\b)|(\b\d{20}\b)|(\b\d{26}\b)| ^E\D{1}\d{9}\D{2}$|^9\d{15,21}$| ^91[0-9]+$| ^[A-Za-z]{2}[0-9]+US$/i";
-	    $matchUSPS6     = "^[0-9]{4}[0-9]{4}[0-9]{4}[0-9]{4}[0-9]{4}[0-9]{2}$";
-		$matchUSPS7     = "^420[0-9]{5}([0-9]{4}[0-9]{4}[0-9]{4}[0-9]{4}[0-9]{4}[0-9]{2})$";
+	    $matchUSPS0     = '~(\b\d{30}\b)|(\b91\d+\b)|(\b\d{20}\b)~';
+	    $matchUSPS1     = '~(\b\d{30}\b)|(\b91\d+\b)|(\b\d{20}\b)|(\b\d{26}\b)| ^E\D{1}\d{9}\D{2}$|^9\d{15,21}$| ^91[0-9]+$| ^[A-Za-z]{2}[0-9]+US$/i~';
+	    $matchUSPS2     = '~^E\D{1}\d{9}\D{2}$|^9\d{15,21}$~';
+	    $matchUSPS3     = '~^91[0-9]+$~';
+	    $matchUSPS4     = '~^[A-Za-z]{2}[0-9]+US$~';
+	    $matchUSPS5     = '~(\b\d{30}\b)|(\b91\d+\b)|(\b\d{20}\b)|(\b\d{26}\b)| ^E\D{1}\d{9}\D{2}$|^9\d{15,21}$| ^91[0-9]+$| ^[A-Za-z]{2}[0-9]+US$/i~';
+	    $matchUSPS6     = '~^[0-9]{4}[0-9]{4}[0-9]{4}[0-9]{4}[0-9]{4}[0-9]{2}$~';
+		$matchUSPS7     = '~^420[0-9]{5}([0-9]{4}[0-9]{4}[0-9]{4}[0-9]{4}[0-9]{4}[0-9]{2})$~';
 	
-	    $matchFedex1    = "^[1-9]{4}[0-9]{4}[0-9]{4}$";
-	    $matchFedex2    = "(\b96\d{20}\b)|(\b\d{15}\b)|(\b\d{12}\b)";
-	    $matchFedex3    = "\b((98\d\d\d\d\d?\d\d\d\d|98\d\d) ?\d\d\d\d ?\d\d\d\d( ?\d\d\d)?)\b";
-	    $matchFedex4    = "^[0-9]{15}$";
+	    $matchFedex1    = '~^[1-9]{4}[0-9]{4}[0-9]{4}$~';
+	    $matchFedex2    = '~(\b96\d{20}\b)|(\b\d{15}\b)|(\b\d{12}\b)~';
+	    $matchFedex3    = '~\b((98\d\d\d\d\d?\d\d\d\d|98\d\d) ?\d\d\d\d ?\d\d\d\d( ?\d\d\d)?)\b~';
+	    $matchFedex4    = '~^[0-9]{15}$~';
 	    
-	    $matchLaser1 = "^LT[0-9]{8}|LE[0-9]{8}|1L[0-9]{8}+$";
-	    $matchLaser2 = "^lt[0-9]{8}|le[0-9]{8}|1l[0-9]{8}+$";
+	    $matchLaser1 = '~^LT[0-9]{8}|LE[0-9]{8}|1L[0-9]{8}+$~';
+	    $matchLaser2 = '~^lt[0-9]{8}|le[0-9]{8}|1l[0-9]{8}+$~';
 
-	    $matchAmazon1 = "^TBA[0-9]{12}+$";
-	    $matchAmazon2 = "^tba[0-9]{12}+$";
+	    $matchAmazon1 = '~^TBA[0-9]{12}+$~';
+	    $matchAmazon2 = '~^tba[0-9]{12}+$~';
 	    
-	    $matchRoyalmail1 = "^[A-Za-z]{2}[0-9]+gb$";
-	    $matchRoyalmail2 = "^[A-Za-z]{2}[0-9]+GB$";
+	    $matchRoyalmail1 = '~^[A-Za-z]{2}[0-9]+gb$~';
+	    $matchRoyalmail2 = '~^[A-Za-z]{2}[0-9]+GB$~';
 	    
-	    $matchChinapost1 = "^R\D{1}[0-9]{9}+CN$";
-	    $matchChinapost2 = "^r\D{1}[0-9]{9}+cn$";
-	    $matchChinapost3 = "^E\D{1}[0-9]{9}+CN$";
-	    $matchChinapost4 = "^e\D{1}[0-9]{9}+cn$";
+	    $matchChinapost1 = '~^R\D{1}[0-9]{9}+CN$~';
+	    $matchChinapost2 = '~^r\D{1}[0-9]{9}+cn$~';
+	    $matchChinapost3 = '~^E\D{1}[0-9]{9}+CN$~';
+	    $matchChinapost4 = '~^e\D{1}[0-9]{9}+cn$~';
 	    
-	    $matchCapost1 = "^[0-9]{16}$|^[A-Z]{2}[0-9]{9}[A-Z]{2}$";
+	    $matchCapost1 = '~^[0-9]{16}$|^[A-Z]{2}[0-9]{9}[A-Z]{2}$~';
 	    
 
 	    if(preg_match($matchUPS1, $tracking_code) ||
