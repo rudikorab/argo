@@ -28,6 +28,29 @@ class Carrier
     const CODE_USPS = 'usps';
 
     /**
+     * LASERSHIP carrier code.
+     */
+    const CODE_LASERSHIP = 'lasership';
+
+    /**
+     * ROYALMAIL carrier code.
+     */
+    const CODE_ROYALMAIL = 'royalmail';
+   
+    /**
+     * CHINAPOST carrier code.
+     */
+    const CODE_CHINAPOST = 'chinapost';
+   
+    /**
+     * CANADAPOST carrier code.
+     */
+    const CODE_CANADAPOST = 'canadapost';
+
+
+
+
+    /**
      * Carrier code.
      *
      * @var string
@@ -51,6 +74,11 @@ class Carrier
         self::CODE_FEDEX => 'FedEx',
         self::CODE_UPS => 'UPS',
         self::CODE_USPS => 'USPS',
+        
+        self::CODE_LASERSHIP => 'LASERSHIP',
+        self::CODE_ROYALMAIL => 'ROYALMAIL',
+        self::CODE_CHINAPOST => 'CHINAPOST',
+        self::CODE_CANADAPOST => 'CANADAPOST',
     ];
 
     /**

@@ -129,25 +129,91 @@ class Package
         $tracking_code = $this->tracking_code;
         $carrier_code  = null;
         $provider_code = null;
+        
+        
+        
+        
+	    $matchDHL1      = '/^[0-9]{2}[0-9]{4}[0-9]{4}$/';
+	    
+	    $matchUPS1      = '/\b(1Z ?[0-9A-Z]{3} ?[0-9A-Z]{3} ?[0-9A-Z]{2} ?[0-9A-Z]{4} ?[0-9A-Z]{3} ?[0-9A-Z]|[\dT]\d\d\d ?\d\d\d\d ?\d\d\d)\b/';
+	    $matchUPS2      = '/^[kKJj]{1}[0-9]{10}$/';
+	    $matchUPS3      = '/^1Z[A-Z0-9]{3}[A-Z0-9]{3}[0-9]{2}[0-9]{4}[0-9]{4}$/i';
+	
+	    $matchUSPS0     = '/(\b\d{30}\b)|(\b91\d+\b)|(\b\d{20}\b)/';
+	    $matchUSPS1     = '/(\b\d{30}\b)|(\b91\d+\b)|(\b\d{20}\b)|(\b\d{26}\b)| ^E\D{1}\d{9}\D{2}$|^9\d{15,21}$| ^91[0-9]+$| ^[A-Za-z]{2}[0-9]+US$/i';
+	    $matchUSPS2     = '/^E\D{1}\d{9}\D{2}$|^9\d{15,21}$/';
+	    $matchUSPS3     = '/^91[0-9]+$/';
+	    $matchUSPS4     = '/^[A-Za-z]{2}[0-9]+US$/';
+	    $matchUSPS5     = '/(\b\d{30}\b)|(\b91\d+\b)|(\b\d{20}\b)|(\b\d{26}\b)| ^E\D{1}\d{9}\D{2}$|^9\d{15,21}$| ^91[0-9]+$| ^[A-Za-z]{2}[0-9]+US$/i';
+	    $matchUSPS6     = '/^[0-9]{4}[0-9]{4}[0-9]{4}[0-9]{4}[0-9]{4}[0-9]{2}$/';
+		$matchUSPS7     = '/^420[0-9]{5}([0-9]{4}[0-9]{4}[0-9]{4}[0-9]{4}[0-9]{4}[0-9]{2})$/';
+	
+	    $matchFedex1    = '/^[1-9]{4}[0-9]{4}[0-9]{4}$/';
+	    $matchFedex2    = '/(\b96\d{20}\b)|(\b\d{15}\b)|(\b\d{12}\b)/';
+	    $matchFedex3    = '/\b((98\d\d\d\d\d?\d\d\d\d|98\d\d) ?\d\d\d\d ?\d\d\d\d( ?\d\d\d)?)\b/';
+	    $matchFedex4    = '/^[0-9]{15}$/';
+	    
+	    $matchLaser1 '/^LT[0-9]{8}|LE[0-9]{8}|1L[0-9]{8}+$/';
+	    $matchLaser2 '/^lt[0-9]{8}|le[0-9]{8}|1l[0-9]{8}+$/';
 
-        if (preg_match('/^[0-9]{2}[0-9]{4}[0-9]{4}$/', $tracking_code, $matches)) {
-            $carrier_code = Carrier::CODE_DHL;
-        } elseif (preg_match('/^[1-9]{4}[0-9]{4}[0-9]{4}$/', $tracking_code, $matches)) {
-            $carrier_code = Carrier::CODE_FEDEX;
-        } elseif (preg_match('/^1Z[A-Z0-9]{3}[A-Z0-9]{3}[0-9]{2}[0-9]{4}[0-9]{4}$/i', $tracking_code)) {
-            $carrier_code = Carrier::CODE_UPS;
-        } elseif (preg_match('/^[0-9]{4}[0-9]{4}[0-9]{4}[0-9]{4}[0-9]{4}[0-9]{2}$/', $tracking_code)) {
-            $carrier_code = Carrier::CODE_USPS;
-        } elseif (preg_match(
-            '/^420[0-9]{5}([0-9]{4}[0-9]{4}[0-9]{4}[0-9]{4}[0-9]{4}[0-9]{2})$/',
-            $tracking_code,
-            $matches
-        )) {
-            $this->tracking_code = $matches[1];
+	    $matchAmazon1 '/^TBA[0-9]{12}+$/';
+	    $matchAmazon2 '/^tba[0-9]{12}+$/';
+	    
+	    $matchRoyalmail1 '/^[A-Za-z]{2}[0-9]+gb$/';
+	    $matchRoyalmail2 '/^[A-Za-z]{2}[0-9]+GB$/';
+	    
+	    $matchChinapost1 '/^R\D{1}[0-9]{9}+CN$/';
+	    $matchChinapost2 '/^r\D{1}[0-9]{9}+cn$/';
+	    $matchChinapost3 '/^E\D{1}[0-9]{9}+CN$/';
+	    $matchChinapost4 '/^e\D{1}[0-9]{9}+cn$/';
+	    
+	    $matchCapost1 '^[0-9]{16}$|^[A-Z]{2}[0-9]{9}[A-Z]{2}$';
+	    
 
-            $carrier_code = Carrier::CODE_USPS;
-            $provider_code = Provider::CODE_ENDICIA;
-        }
+	    if(preg_match($matchUPS1, $tracking_code) ||
+	    	preg_match($matchUPS2, $tracking_code) ||
+	    	preg_match($matchUPS3, $tracking_code)) {
+	        $carrier_code = Carrier::CODE_UPS;
+	    } else if(preg_match($matchUSPS0, $tracking_code) || 
+	              preg_match($matchUSPS1, $tracking_code) ||
+	              preg_match($matchUSPS2, $tracking_code) ||
+	              preg_match($matchUSPS3, $tracking_code) ||
+	              preg_match($matchUSPS4, $tracking_code) ||
+	              preg_match($matchUSPS5, $tracking_code) ||
+	              preg_match($matchUSPS6, $tracking_code) ||
+	              preg_match($matchUSPS7, $tracking_code)) {
+			$carrier_code = Carrier::CODE_USPS;
+	    } else if (preg_match($matchFedex1, $tracking_code) || 
+	               preg_match($matchFedex2, $tracking_code) ||
+	               preg_match($matchFedex3, $tracking_code) || 
+	               preg_match($matchFedex4, $tracking_code)) {
+			$carrier_code = Carrier::CODE_FEDEX;
+	    } else if (preg_match($matchDHL1, $tracking_code) || 
+	               preg_match($matchFedex2, $tracking_code) ||
+	               preg_match($matchFedex3, $tracking_code) || 
+	               preg_match($matchFedex4, $tracking_code)) {
+			$carrier_code = Carrier::CODE_DHL;
+	    } else if (preg_match($matchLaser1, $tracking_code) || 
+	               preg_match($matchLaser2, $tracking_code)) {
+			$carrier_code = Carrier::CODE_LASERSHIP;
+	    } else if (preg_match($matchRoyalmail1, $tracking_code) || 
+	               preg_match($matchRoyalmail2, $tracking_code)) {
+			$carrier_code = Carrier::CODE_ROYALMAIL;
+	    } else if (preg_match($matchChinapost1, $tracking_code) || 
+	               preg_match($matchChinapost2, $tracking_code) ||
+	               preg_match($matchChinapost3, $tracking_code) ||
+	               preg_match($matchChinapost4, $tracking_code)) {
+			$carrier_code = Carrier::CODE_CHINAPOST;
+	    } else if (preg_match($matchCapost1, $tracking_code)) {
+			$carrier_code = Carrier::CODE_CANADAPOST;
+	    }
+
+
+
+
+
+
+
 
         if (!empty($carrier_code)) {
             $this->carrier = new Carrier($carrier_code);
