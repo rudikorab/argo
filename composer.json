@@ -1,14 +1,14 @@
 {
-    "name": "dsposito/argo",
+    "name": "rudikorab/argo",
     "description": "A shipping utility.",
     "keywords": ["argo", "shipping", "tracking number", "php"],
     "type": "library",
-    "homepage": "https://github.com/dsposito/argo",
+    "homepage": "https://github.com/rudikorab/argo",
     "license": "MIT",
     "authors": [
         {
-            "name": "Daniel Sposito",
-            "homepage": "https://github.com/dsposito"
+            "name": "Korab Rudi",
+            "homepage": "https://github.com/rudikorab"
         }
     ],
     "require": {

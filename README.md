@@ -12,10 +12,10 @@ In [Greek mythology](http://en.wikipedia.org/wiki/Argo), Argo (in Greek, meaning
 Run the following [composer](https://getcomposer.org/doc/00-intro.md#installation-linux-unix-osx) command to add the package to your project:
 
 ```
-composer require dsposito/argo
+composer require rudikorab/argo
 ```
 
-Alternatively, add `"dsposito/argo": "^2.0"` to your composer.json file.
+Alternatively, add `"rudikorab/argo": "^2.0"` to your composer.json file.
 
 ## Usage
 Simply provide a tracking number when initializing a new package instance.
