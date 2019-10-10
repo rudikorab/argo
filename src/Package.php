@@ -153,21 +153,21 @@ class Package
 	    $matchFedex3    = "\b((98\d\d\d\d\d?\d\d\d\d|98\d\d) ?\d\d\d\d ?\d\d\d\d( ?\d\d\d)?)\b";
 	    $matchFedex4    = "^[0-9]{15}$";
 	    
-	    $matchLaser1 "^LT[0-9]{8}|LE[0-9]{8}|1L[0-9]{8}+$";
-	    $matchLaser2 "^lt[0-9]{8}|le[0-9]{8}|1l[0-9]{8}+$";
+	    $matchLaser1 = "^LT[0-9]{8}|LE[0-9]{8}|1L[0-9]{8}+$";
+	    $matchLaser2 = "^lt[0-9]{8}|le[0-9]{8}|1l[0-9]{8}+$";
 
-	    $matchAmazon1 "^TBA[0-9]{12}+$";
-	    $matchAmazon2 "^tba[0-9]{12}+$";
+	    $matchAmazon1 = "^TBA[0-9]{12}+$";
+	    $matchAmazon2 = "^tba[0-9]{12}+$";
 	    
-	    $matchRoyalmail1 "^[A-Za-z]{2}[0-9]+gb$";
-	    $matchRoyalmail2 "^[A-Za-z]{2}[0-9]+GB$";
+	    $matchRoyalmail1 = "^[A-Za-z]{2}[0-9]+gb$";
+	    $matchRoyalmail2 = "^[A-Za-z]{2}[0-9]+GB$";
 	    
-	    $matchChinapost1 "^R\D{1}[0-9]{9}+CN$";
-	    $matchChinapost2 "^r\D{1}[0-9]{9}+cn$";
-	    $matchChinapost3 "^E\D{1}[0-9]{9}+CN$";
-	    $matchChinapost4 "^e\D{1}[0-9]{9}+cn$";
+	    $matchChinapost1 = "^R\D{1}[0-9]{9}+CN$";
+	    $matchChinapost2 = "^r\D{1}[0-9]{9}+cn$";
+	    $matchChinapost3 = "^E\D{1}[0-9]{9}+CN$";
+	    $matchChinapost4 = "^e\D{1}[0-9]{9}+cn$";
 	    
-	    $matchCapost1 "^[0-9]{16}$|^[A-Z]{2}[0-9]{9}[A-Z]{2}$";
+	    $matchCapost1 = "^[0-9]{16}$|^[A-Z]{2}[0-9]{9}[A-Z]{2}$";
 	    
 
 	    if(preg_match($matchUPS1, $tracking_code) ||
@@ -212,29 +212,6 @@ class Package
 
 
 
-/*
-	
-	//$/i
-	
-	
-    if(substr($tracking, -1) == ';'){ $tracking = substr_replace($tracking, '', -1); }else{ $tracking = $tracking; }
-			    if(strlen($tracking) < 5 || $tracking == '00' || $tracking == 'na' || $tracking == 'n/a'){ $tracking = 'n/a'; $tracking_detect = 'n/a';}
-			    elseif(preg_match('/\b(1Z ?[0-9A-Z]{3} ?[0-9A-Z]{3} ?[0-9A-Z]{2} ?[0-9A-Z]{4} ?[0-9A-Z]{3} ?[0-9A-Z]|[\dT]\d\d\d ?\d\d\d\d ?\d\d\d)\b/',$tracking)){ $tracking_detect = 'ups'; }
-			    elseif(preg_match('/\b(1z ?[0-9A-Z]{3} ?[0-9A-Z]{3} ?[0-9A-Z]{2} ?[0-9A-Z]{4} ?[0-9A-Z]{3} ?[0-9A-Z]|[\dT]\d\d\d ?\d\d\d\d ?\d\d\d)\b/',$tracking)){ $tracking_detect = 'ups'; }
-			    elseif(preg_match('/(\b96\d{20}\b)|(\b\d{15}\b)|(\b\d{12}\b)/',$tracking)){ $tracking_detect = 'fedex'; }
-			    elseif(preg_match('/\b((98\d\d\d\d\d?\d\d\d\d|98\d\d) ?\d\d\d\d ?\d\d\d\d( ?\d\d\d)?)\b/',$tracking)){ $tracking_detect = 'fedex'; }
-			    elseif(preg_match('/^[0-9]{15}$/',$tracking)){ $tracking_detect = 'fedex'; }
-			    
-			    elseif(preg_match('/(\b\d{30}\b)|(\b91\d+\b)|(\b\d{20}\b)/',$tracking)){ $tracking_detect = 'usps'; }
-			    elseif(preg_match('/^E\D{1}\d{9}\D{2}$|^9\d{15,21}$/',$tracking)){ $tracking_detect = 'usps'; }
-			    elseif(preg_match('/^e\D{1}\d{9}\D{2}$|^9\d{15,21}$/',$tracking)){ $tracking_detect = 'usps'; }
-			    elseif(preg_match('/^91[0-9]+$/',$tracking)){ $tracking_detect = 'usps'; }
-			    elseif(preg_match('/^[A-Za-z]{2}[0-9]+US$/',$tracking)){ $tracking_detect = 'usps'; }
-			    elseif(preg_match('/^[A-Za-z]{2}[0-9]+us$/',$tracking)){ $tracking_detect = 'usps'; }
-			    elseif(preg_match('/^LK[0-9]{9}+CN$/',$tracking)){ $tracking_detect = 'usps'; }
-			    elseif(preg_match('/^lk[0-9]{9}+cn$/',$tracking)){ $tracking_detect = 'usps'; }
-			    
-*/
 
 
 
