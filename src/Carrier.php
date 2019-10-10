@@ -46,6 +46,11 @@ class Carrier
      * CANADAPOST carrier code.
      */
     const CODE_CANADAPOST = 'canadapost';
+   
+    /**
+     * AMAZON carrier code.
+     */
+    const CODE_AMAZON = 'amazon';
 
 
 
@@ -74,11 +79,13 @@ class Carrier
         self::CODE_FEDEX => 'FedEx',
         self::CODE_UPS => 'UPS',
         self::CODE_USPS => 'USPS',
-        
+        self::CODE_AMAZON => 'AMAZON',
         self::CODE_LASERSHIP => 'LASERSHIP',
         self::CODE_ROYALMAIL => 'ROYALMAIL',
         self::CODE_CHINAPOST => 'CHINAPOST',
         self::CODE_CANADAPOST => 'CANADAPOST',
+        
+        
     ];
 
     /**
