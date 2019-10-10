@@ -127,6 +127,8 @@ class Package
     private function deduceTrackingCode(): Package
     {
         $tracking_code = $this->tracking_code;
+        $label_ocr = $this->$label_ocr;
+        
         $carrier_code  = null;
         $provider_code = null;
         
@@ -155,7 +157,7 @@ class Package
 	    
 	    $matchLaser = '~^LT[0-9]{8}|LE[0-9]{8}|1L[0-9]{8}+$/i~';
 
-	    $matchAmazon = '~^TBA[0-9]{12}+$/i~';
+	    $matchAmazon = '~^TBA[0-9]{12}+$~';
 	    
 	    $matchRoyalmail = '~^[A-Za-z]{2}[0-9]+GB$/i~';
 	    
@@ -197,6 +199,10 @@ class Package
 	    } else if (preg_match($matchCapost, $tracking_code)) {
 			$carrier_code = Carrier::CODE_CANADAPOST;
 	    }
+	    
+	    
+	    
+	    
 
 
 
