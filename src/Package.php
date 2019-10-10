@@ -154,14 +154,14 @@ class Package
 	    $matchFedex3    = '~\b((98\d\d\d\d\d?\d\d\d\d|98\d\d) ?\d\d\d\d ?\d\d\d\d( ?\d\d\d)?)\b~';
 	    $matchFedex4    = '~^[0-9]{15}$~';
 	    
-	    $matchLaser = '~^LT[0-9]{8}|LE[0-9]{8}|1L[0-9]{8}+$/i~';
+	    $matchLaser = '~^LT[0-9]{8}|LE[0-9]{8}|1L[0-9]{8}+$~i';
 
-	    $matchAmazon = '~^TBA[0-9]{12}+$~';
+	    $matchAmazon = '~^TBA[0-9]{12}+$~i';
 	    
-	    $matchRoyalmail = '~^[A-Za-z]{2}[0-9]+GB$/i~';
+	    $matchRoyalmail = '~^[A-Za-z]{2}[0-9]+GB$~i';
 	    
-	    $matchChinapost1 = '~^R\D{1}[0-9]{9}+CN$/i~';
-	    $matchChinapost2 = '~^E\D{1}[0-9]{9}+CN$/i~';
+	    $matchChinapost1 = '~^R\D{1}[0-9]{9}+CN$~i';
+	    $matchChinapost2 = '~^E\D{1}[0-9]{9}+CN$~i';
 	    
 	    $matchCapost = '~^[0-9]{16}$|^[A-Z]{2}[0-9]{9}[A-Z]{2}$~';
 	    
