@@ -150,6 +150,7 @@ class Package
 	    $matchUSPS6     = '/\b(\b\d{30}\b)|(\b91\d+\b)|(\b\d{20}\b)|(\b\d{26}\b)| ^E\D{1}\d{9}\D{2}$|^9\d{15,21}$| ^91[0-9]+$| ^[A-Za-z]{2}[0-9]+US\b/i';
 	    $matchUSPS7     = '/\b^[0-9]{4}[0-9]{4}[0-9]{4}[0-9]{4}[0-9]{4}[0-9]{2}\b/i';
 		$matchUSPS8     = '/\b^420[0-9]{5}([0-9]{4}[0-9]{4}[0-9]{4}[0-9]{4}[0-9]{4}[0-9]{2})\b/i';
+		$matchUSPS9     = '/\b^420[0-9]{5}([0-9]{4}[0-9]{4}[0-9]{4}[0-9]{4}[0-9]{4}[0-9]{4}[0-9]{2})\b/i';
 	
 	    $matchFedex1    = '/\b^[1-9]{4}[0-9]{4}[0-9]{4}\b/i';
 	    $matchFedex2    = '/\b(\b96\d{20}\b)|(\b\d{15}\b)|(\b\d{12}\b)\b/i';
@@ -180,10 +181,9 @@ class Package
 	              preg_match($matchUSPS4, $tracking_code) ||
 	              preg_match($matchUSPS5, $tracking_code) ||
 	              preg_match($matchUSPS6, $tracking_code) ||
-	              preg_match($matchUSPS7, $tracking_code) 
-	              //||
-	              //preg_match($matchUSPS8, $tracking_code)
-	              ) {
+	              preg_match($matchUSPS7, $tracking_code) ||
+	              preg_match($matchUSPS8, $tracking_code) ||
+	              preg_match($matchUSPS9, $tracking_code)) {
 			$carrier_code = Carrier::CODE_USPS;
 	    } else if (preg_match($matchFedex1, $tracking_code) || 
 	               preg_match($matchFedex2, $tracking_code) ||
@@ -202,15 +202,7 @@ class Package
 			$carrier_code = Carrier::CODE_CHINAPOST;
 	    } else if (preg_match($matchCapost, $tracking_code)) {
 			$carrier_code = Carrier::CODE_CANADAPOST;
-	    } elseif (preg_match(
-            '/^420[0-9]{5}([0-9]{4}[0-9]{4}[0-9]{4}[0-9]{4}[0-9]{4}[0-9]{2})$/',
-            $tracking_code,
-            $matches
-        )) {
-            $this->tracking_code = $matches[1];
-            $carrier_code = Carrier::CODE_USPS;
-            $provider_code = Provider::CODE_ENDICIA;
-        }
+	    }
 	    
 	    
 	    
