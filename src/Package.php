@@ -200,8 +200,15 @@ class Package
 			$carrier_code = Carrier::CODE_CHINAPOST;
 	    } else if (preg_match($matchCapost, $tracking_code)) {
 			$carrier_code = Carrier::CODE_CANADAPOST;
-	    }
-	    
+	    } elseif (preg_match(
+            '/^420[0-9]{5}([0-9]{4}[0-9]{4}[0-9]{4}[0-9]{4}[0-9]{4}[0-9]{2})$/',
+            $tracking_code,
+            $matches
+        )) {
+            $this->tracking_code = $matches[1];
+            $carrier_code = Carrier::CODE_USPS;
+            $provider_code = Provider::CODE_ENDICIA;
+        }
 	    
 	    
 	    
