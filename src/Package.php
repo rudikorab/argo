@@ -180,8 +180,10 @@ class Package
 	              preg_match($matchUSPS4, $tracking_code) ||
 	              preg_match($matchUSPS5, $tracking_code) ||
 	              preg_match($matchUSPS6, $tracking_code) ||
-	              preg_match($matchUSPS7, $tracking_code) ||
-	              preg_match($matchUSPS8, $tracking_code)) {
+	              preg_match($matchUSPS7, $tracking_code) 
+	              //||
+	              //preg_match($matchUSPS8, $tracking_code)
+	              ) {
 			$carrier_code = Carrier::CODE_USPS;
 	    } else if (preg_match($matchFedex1, $tracking_code) || 
 	               preg_match($matchFedex2, $tracking_code) ||
